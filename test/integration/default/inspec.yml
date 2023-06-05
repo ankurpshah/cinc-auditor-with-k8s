@@ -1,0 +1,8 @@
+name: default
+inspec_version: '~> 5'
+version: 0.1.0
+depends:
+  - name: inspec-kubernetes
+    url: https://github.com/inspec/inspec-k8s/archive/main.tar.gz
+supports:
+  - platform: k8s
