@@ -1,0 +1,13 @@
+---
+version: '3.6'
+services:
+  kitchen:
+    image: ankurpshah/kitchen:2.0
+    network_mode: host
+    working_dir: /root/workspace
+    volumes:
+      - .:/root/workspace
+      - ~/.aws:/root/.aws
+      - ~/.kube:/root/.kube
+    environment:
+      AWS_PROFILE: PowerUserAccess

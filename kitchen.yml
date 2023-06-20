@@ -1,0 +1,56 @@
+---
+driver:
+  name: terraform
+  backend_configurations:
+    region: "us-east-1"
+    profile: "PowerUserAccess"
+    # bucket: "bucket"
+    # key: "soa-aws-stack-v2/cluster/test/terraform.tfstate"
+    # kms_key_id: "111"
+    # dynamodb_table: "terraform-locks"
+  variable_files:
+    - vars/prod.tfvars
+
+provisioner:
+  name: terraform
+
+verifier:
+  name: terraform
+
+platforms:
+  - name: aws
+
+suites:
+  - name: aws
+    verifier:
+      systems:
+        - name: aws
+          backend: aws
+          profile_locations:
+            - test/integration/aws
+          reporter:
+            - cli
+            # - progress-bar
+            # - progress
+            # - documentation
+            - json:./reports/json/aws.json
+            - json-min:./reports/json-min/aws.json
+            - junit:./reports/junit/aws.xml
+            - junit2:./reports/junit2/aws.xml
+            - html:./reports/html/aws.html
+            - html2:./reports/html2/aws.html
+        - name: k8s
+          backend: k8s
+          profile_locations:
+            - test/integration/k8s
+          reporter:
+            - cli
+            # - progress-bar
+            # - progress
+            # - documentation
+            - json:./reports/json/k8s.json
+            - json-min:./reports/json-min/k8s.json
+            - junit:./reports/junit/k8s.xml
+            - junit2:./reports/junit2/k8s.xml
+            - html:./reports/html/k8s.html
+            - html2:./reports/html2/k8s.html

@@ -58,4 +58,8 @@ build-iPhoneSimulator/
 .terraform
 terraform.tfstate.d
 reports
+**/inspec.lock.kitchen/
+.kitchen.local.yml
+.gemrc
+.terraform.lock.hcl
 **/inspec.lock
