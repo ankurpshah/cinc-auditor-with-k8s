@@ -1,0 +1,7 @@
+FROM ruby:3.0
+
+COPY .gemrc /root/.gemrc
+
+RUN gem install cinc-auditor-bin --clear-sources -s https://packagecloud.io/cinc-project/unstable -s https://rubygems.org
+
+ENTRYPOINT [ "cinc-auditor" ]

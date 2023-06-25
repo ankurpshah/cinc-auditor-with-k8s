@@ -11,3 +11,13 @@ services:
       - ~/.kube:/root/.kube
     environment:
       AWS_PROFILE: PowerUserAccess
+  cinc-auditor:
+    image: ankurpshah/cinc-auditor:2.0
+    network_mode: host
+    working_dir: /root/workspace
+    volumes:
+      - .:/root/workspace
+      - ~/.aws:/root/.aws
+      - ~/.kube:/root/.kube
+    environment:
+      AWS_PROFILE: PowerUserAccess
